@@ -12,7 +12,7 @@ def shell():
     count = 0
     while True:
         comando = raw_input("{}~#: ".format(current_dir))
-        print(comando)
+        #print(comando)
         if comando == "exit":
             target.send(comando)
             break
